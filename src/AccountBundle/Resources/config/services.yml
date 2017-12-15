@@ -1,0 +1,10 @@
+services:
+
+  account_transaction.service:
+    class: 'AccountBundle\Service\TransactionService'
+
+  transaction.subscriber:
+    class: AccountBundle\EventSubscriber\TransactionSubscriber
+    arguments: ['@account_transaction.service']
+    tags:
+      - { name: doctrine.event_subscriber, connection: default }

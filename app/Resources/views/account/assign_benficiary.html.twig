@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>Assign Beneficiary</h1>
+
+    {{ form_start(assign_form) }}
+        {{ form_widget(assign_form) }}
+        <input class="btn btn-success" type="submit" value="Assign" />
+    {{ form_end(assign_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('account_index') }}">Back to the list</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

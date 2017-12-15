@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+    <h1>Accounts list</h1>
+
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Num</th>
+                <th>Name</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for account in accounts %}
+            <tr>
+                <td><a href="{{ path('account_show', { 'id': account.id }) }}">{{ account.id }}</a></td>
+                <td>{{ account.num }}</td>
+                <td>{{ account.name }}</td>
+                <td>{{ account.amount }}</td>
+                <td>{% if account.date %}{{ account.date|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a class="bg-info text-white" href="{{ path('account_show', { 'id': account.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a class="bg-warning text-white" href="{{ path('account_edit', { 'id': account.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('account_new') }}">Create a new account</a>
+        </li>
+    </ul>
+</div>
+{% endblock %}

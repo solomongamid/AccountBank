@@ -1,0 +1,23 @@
+web:
+  image: nginx:latest
+  ports:
+    - "8080:80"
+  volumes:
+    - ./:/symfony
+    - ./symfony.conf:/etc/nginx/conf.d/default.conf
+  links:
+    - php
+php:
+  build: .docker/php-fpm
+  working_dir: /symfony
+  volumes:
+    - ./:/symfony
+  links:
+    - mysql
+mysql:
+  image: mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_DATABASE: symfony
+    MYSQL_USER: symfony
+    MYSQL_PASSWORD: symfony

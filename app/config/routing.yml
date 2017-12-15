@@ -1,0 +1,12 @@
+account:
+    resource: "@AccountBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
+_assetic:
+  resource: .
+  type: assetic
